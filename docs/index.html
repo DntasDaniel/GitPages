@@ -1,0 +1,170 @@
+<html>
+
+<head>
+  <title>
+    Imersão Dev - Aula 03
+  </title>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="page-title">
+      Mentalista
+    </h1>
+    <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-mentalista.svg" class="page-logo" alt=""><br>
+    <p class="page-subtitle">
+      Digite um número de 0 a 10
+    <h2 class="comecou" id="comecou"></h2>
+    </p>
+    <input type="number" id="valor" /><br>
+    <button type="submit" onclick="Chutar()">Chutar</button>
+    <h2 class="resultado" id="resultado"></h2>
+    <button type="submit" onclick="Explicar()">Explicação</button>
+    <h2 class="explica" id="explica"></h2>
+  </div>
+  <a href="https://alura.com.br/" target="_blank">
+    <img src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="" class="alura-logo">
+
+  </a>
+  <script>
+  
+    
+    var num = Math.floor(Math.random() * (10 - 0 + 1) + 0); //ou também: num = parseInt(Math.random()*11);
+//var num = Math.floor(Math.random() * (max - min + 1) + min);
+var n = 0;
+var x = 0;
+//console.log("numero secreto " + num); //Mostra o número no console.
+
+function Explicar() {
+  var elementoResultado = document.getElementById("explica");
+  var exp =
+    "O computador irá escolhar um número de 0 a 10, e o usuário deverá tentar descobrir qual número é.";
+  elementoResultado.innerHTML = exp;
+}
+
+function Chutar() {
+  var chute = parseInt(document.getElementById("valor").value);
+  for (var i = 1; chute != num; i++) {
+    x = x + 1;
+    if (chute > 10 || chute < 0) {
+      console.log("Valor inválido.");
+      var elementoResultado = document.getElementById("resultado");
+      var exp = "Você dgitou um valor inválido, digite números de 0 a 10.";
+      elementoResultado.innerHTML = exp;
+      x = x - 1;
+      return 0;
+    } else if (chute > num) {
+      var n = Number(x);
+      console.log("Chute alto.");
+      var elementoResultado = document.getElementById("resultado");
+      var exp = `Errou! Chute alto. Tentativa ${n}`;
+      elementoResultado.innerHTML = exp;
+      return 0;
+    } else if (chute < num) {
+      var n = Number(x);
+      console.log("Chute baixo.");
+      var elementoResultado = document.getElementById("resultado");
+      var exp = `Errou! Chute Baixo. Tentativa ${n}`;
+      elementoResultado.innerHTML = exp;
+      return 0;
+    }
+  }
+  if (chute == num) {
+    var n = Number(x) + 1;
+    console.log("Acertou");
+    if (n == 1) {
+      console.log(`Seu número de tentaivas foi: ${n} vez`);
+    } else if (n > 1) {
+      console.log(`Seu número de tentaivas foram: ${n} vezes`);
+    }
+    var elementoResultado = document.getElementById("resultado");
+    var exp = `Você acertou! O número era ${chute}, e quantidade de tentativa foram ${n}!`;
+    elementoResultado.innerHTML = exp;
+    x = 0;
+    num = Math.floor(Math.random() * (10 - 0 + 1) + 0);
+  }
+}
+    
+  
+  </script>
+  
+  
+  <style>
+    
+    
+    body {
+  font-family: "Roboto Mono", monospace;
+  min-height: 600px;
+  background-image: url("https://cdn.pixabay.com/photo/2020/06/04/11/10/bulb-5258341_960_720.jpg");
+  background-color: #000000;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  height: 100vh;
+}
+
+.page-title {
+  color: #ffffff;
+  margin: 0 0 5px;
+}
+
+.page-subtitle {
+  color: #ffffff;
+  margin-top: 16px;
+}
+
+.page-logo {
+  width: 200px;
+}
+
+.alura-logo {
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+@media (max-height: 500px) {
+  body {
+    min-height: 800px;
+  }
+}
+
+input {
+  margin: 4px;
+  padding: 6px;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 12px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.resultado {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.explica {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 16px;
+}
+
+    
+    
+  <style>
+    
+
+</body>
+
+</html>
